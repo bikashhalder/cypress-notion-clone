@@ -1,0 +1,55 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1701764929120,
+      "tag": "0000_perpetual_anita_blake",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1701775884891,
+      "tag": "0001_nasty_silver_surfer",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1701785902826,
+      "tag": "0002_oval_steel_serpent",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1702441885496,
+      "tag": "0003_tiny_morg",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1702622583984,
+      "tag": "0004_shocking_ironclad",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1702738045957,
+      "tag": "0005_dusty_colossus",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1703849590402,
+      "tag": "0006_woozy_king_cobra",
+      "breakpoints": true
+    }
+  ]
+}
