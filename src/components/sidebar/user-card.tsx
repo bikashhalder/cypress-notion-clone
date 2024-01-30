@@ -53,7 +53,7 @@ const UserCard: React.FC<UserCardProps> = async ({ subscription }) => {
     '>
       <aside className='flex justify-center items-center gap-2'>
         <Avatar>
-          <AvatarImage src={profile.avatarUrl} />
+          <AvatarImage src='' />
           <AvatarFallback>
             <CypressProfileIcon />
           </AvatarFallback>
