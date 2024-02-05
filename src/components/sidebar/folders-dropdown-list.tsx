@@ -91,6 +91,15 @@ const FoldersDropdownList: React.FC<FoldersDropdownListProps> = ({
     }
   };
 
+  // to remove the hydration error
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <>
       <div

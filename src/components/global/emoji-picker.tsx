@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 interface EmojiPickerProps {
@@ -15,6 +15,16 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({ children, getValue }) => {
   const onClick = (selectedEmoji: any) => {
     if (getValue) getValue(selectedEmoji.emoji);
   };
+
+  // to remove the hydration error
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div className='flex items-center'>
       <Popover>
