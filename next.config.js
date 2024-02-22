@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     domains: ["hhymeraajecnbkdoamqi.supabase.co"],
   },
-  distDir: "dist",
+  // distDir: "dist",
 };
 
 module.exports = nextConfig;
