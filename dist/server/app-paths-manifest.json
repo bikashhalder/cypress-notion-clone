@@ -1,0 +1,15 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(auth)/signup/page": "app/(auth)/signup/page.js",
+  "/api/auth/callback/route": "app/api/auth/callback/route.js",
+  "/api/create-checkout-session/route": "app/api/create-checkout-session/route.js",
+  "/api/create-portal-link/route": "app/api/create-portal-link/route.js",
+  "/api/webhook/route": "app/api/webhook/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(main)/dashboard/page": "app/(main)/dashboard/page.js",
+  "/(site)/page": "app/(site)/page.js",
+  "/(main)/dashboard/[workspaceId]/[folderId]/[fileId]/page": "app/(main)/dashboard/[workspaceId]/[folderId]/[fileId]/page.js",
+  "/(main)/dashboard/[workspaceId]/page": "app/(main)/dashboard/[workspaceId]/page.js",
+  "/(main)/dashboard/[workspaceId]/[folderId]/page": "app/(main)/dashboard/[workspaceId]/[folderId]/page.js"
+}
