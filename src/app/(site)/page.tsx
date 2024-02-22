@@ -2,7 +2,7 @@ import TitleSection from "@/components/landing-page/title-section";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
-import Banner from "../../../public/appBanner.png";
+import Banner from "../../../public/banner.png";
 import Cal from "../../../public/cal.png";
 import { randomUUID } from "crypto";
 import { twMerge } from "tailwind-merge";
@@ -13,6 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import Diamond from "../../../public/icons/diamond.svg";
 import Check from "../../../public/icons/check.svg";
+import Logo from "../../../public/cypresslogo.svg";
 const HomePage = () => {
   return (
     <>
@@ -39,6 +40,7 @@ const HomePage = () => {
           from-primary
         to-brand-primaryBlue
           sm:w-[300px]
+          mb-56
         '>
           <Button
             variant='secondary'
@@ -48,35 +50,39 @@ const HomePage = () => {
             text-2xl
             bg-background
             '>
-            Get Cypress Free
+            Get Juniper Free
           </Button>
         </div>
+
         <div
           className='md:mt-[-90px]
           sm:w-full
-          w-[750px]
+          w-[450px]
           flex
           justify-center
           items-center
-          mt-[-40px]
           relative
           sm:ml-0
           ml-[-50px]
+          border-8
+          rounded-lg
+          mb-52
         '>
           <Image src={Banner} alt='Application banner' />
           <div
             className='bottom-0
-            top-[50%]
+            top-[10%]
             bg-gradient-to-t
             dark: from-background
             left-0
             right-0
             absolute
             z-10
-          '></div>
+          '
+          />
         </div>
       </section>
-      {/* <section className='relative'>
+      <section className='relative'>
         <div
           className="overflow-hidden
           flex
@@ -105,26 +111,26 @@ const HomePage = () => {
           before:z-10
           before:absolute
         "></div>
-      </section> */}
+      </section>
       <section
         className='px-4
-      sm:px-6
-      flex
-      justify-center
-      items-center
-      flex-col
-      relative
+        sm:px-6
+        flex
+        justify-center
+        items-center
+        flex-col
+        relative
       '>
         <div
           className='w-[30%]
-        blur-[120px]
-        rounded-full
-        h-32
-        absolute
-        bg-brand-primaryPurple/50
-        -z-10
-        top-32
-        mt-12
+            blur-[120px]
+            rounded-full
+            h-32
+            absolute
+            bg-brand-primaryPurple/50
+            -z-10
+            top-32
+            mt-12
         '
         />
         <TitleSection
@@ -230,9 +236,10 @@ const HomePage = () => {
         </div>
       </section>
       <section
-        className='mt-20
+        className='relative mt-20
       px-4
       sm:px-6
+      mb-4
       '>
         <TitleSection
           title='The Perfect Plan For You'
@@ -288,7 +295,7 @@ const HomePage = () => {
                     className='font-normal 
                   text-2xl
                   '>
-                    ${card.price}
+                    ₹{card.price}
                   </span>
                   {+card.price > 0 ? (
                     <span className='dark:text-washed-purple-800 ml-1'>
@@ -300,13 +307,6 @@ const HomePage = () => {
                   <p className='dark:text-washed-purple-800'>
                     {card.description}
                   </p>
-                  <Button
-                    variant='secondary'
-                    className='whitespace-nowrap w-full mt-4'>
-                    {card.planType === PRICING_PLANS.proplan
-                      ? "Go Pro"
-                      : "Get Started"}
-                  </Button>
                 </CardContent>
               }
               cardFooter={
@@ -334,6 +334,36 @@ const HomePage = () => {
             />
           ))}
         </div>
+      </section>
+      <section>
+        <footer className='h-36 border-t-2 mt-36'>
+          <ul className='flex items-center justify-center h-full relative'>
+            <li className='left-7 absolute flex'>
+              <Image src={Logo} alt='Juniper Logo' width={25} height={25} />
+              <span className='font-semibold dark:text-white ml-3'>
+                Juniper
+              </span>
+            </li>
+            <li className='ml-14 cursor-pointer hover:text-primary-foreground'>
+              Terms & Conditions
+            </li>
+            <li className='ml-14 cursor-pointer hover:text-primary-foreground'>
+              Privacy Policy
+            </li>
+            <li className='ml-14 cursor-pointer hover:text-primary-foreground'>
+              Career
+            </li>
+            <li className='ml-14 cursor-pointer hover:text-primary-foreground'>
+              About Us
+            </li>
+            <li className='ml-14 cursor-pointer hover:text-primary-foreground'>
+              Pricing
+            </li>
+            <li className='ml-14 cursor-pointer hover:text-primary-foreground'>
+              Resources
+            </li>
+          </ul>
+        </footer>
       </section>
     </>
   );

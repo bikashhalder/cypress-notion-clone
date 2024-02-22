@@ -59,7 +59,7 @@ const Login = () => {
             className='font-semibold
                      dark:text-white text-4xl first-letter:ml-2
         '>
-            cypress
+            Juniper
           </span>
         </Link>
 

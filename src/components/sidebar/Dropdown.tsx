@@ -1,6 +1,5 @@
 "use client";
 import { useAppState } from "@/lib/providers/state-provider";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import React, { useMemo, useState } from "react";
 import {
@@ -36,7 +35,6 @@ const Dropdown: React.FC<DropdownProps> = ({
   disabled,
   ...props
 }) => {
-  const supabase = createClientComponentClient();
   const { toast } = useToast();
   const { user } = useSupabaseUser();
   const { state, dispatch, workspaceId, folderId } = useAppState();

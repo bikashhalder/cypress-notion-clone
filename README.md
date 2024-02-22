@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Juniper
 
-## Getting Started
+Juniper is a project built with various technologies and libraries to provide a platform for real-time collaboration, real-time cursor, structured folder and file management, advanced text editing capabilities, and subscription plans for different user needs.
 
-First, run the development server:
+![Juniper Preview](/public/banner.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **React**: A JavaScript library for building user interfaces.
+- **Next.js**: A React framework for server-rendered applications.
+- **Socket.IO**: A library for real-time web applications.
+- **Supabase**: An open-source alternative to Firebase, offering real-time and secure backend services.
+- **Stripe**: A payment processing platform for online businesses.
+- **Quill**: A modern WYSIWYG editor built for compatibility and extensibility.
+- **Tailwind CSS**: A utility-first CSS framework for creating custom designs quickly.
+- **Zod**: A TypeScript-first schema declaration and validation library.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Libraries Utilized
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **@hookform/resolvers**: Form validation library for React.
+- **@radix-ui/react-accordion**: Accordion component for React.
+- **@radix-ui/react-alert-dialog**: Alert dialog component for React.
+- **@radix-ui/react-avatar**: Avatar component for React.
+- **@radix-ui/react-dialog**: Dialog component for React.
+- **@radix-ui/react-label**: Label component for React.
+- **@radix-ui/react-navigation-menu**: Navigation menu component for React.
+- **@radix-ui/react-popover**: Popover component for React.
+- **@radix-ui/react-progress**: Progress component for React.
+- **@radix-ui/react-scroll-area**: Scroll area component for React.
+- **@radix-ui/react-select**: Select component for React.
+- **@radix-ui/react-separator**: Separator component for React.
+- **@radix-ui/react-slot**: Slot component for React.
+- **@radix-ui/react-toast**: Toast component for React.
+- **@radix-ui/react-tooltip**: Tooltip component for React.
+- **@supabase/auth-helpers-nextjs**: Authentication helpers for Next.js with Supabase.
+- **class-variance-authority**: Library for class variance in TypeScript.
+- **clsx**: A utility for constructing class names dynamically.
+- **dotenv**: A module to load environment variables from a `.env` file.
+- **drizzle-orm**: Object-relational mapping library for PostgreSQL and JavaScript.
+- **emoji-picker-react**: Emoji picker component for React.
+- **lucide-react**: A set of simply beautiful open-source icons.
+- **next-themes**: A Next.js library for handling themes.
+- **postgres**: PostgreSQL client for Node.js.
+- **quill-cursors**: Collaborative editing cursors for Quill editor.
+- **tailwind-merge**: Utility for merging Tailwind CSS classes.
+- **tailwindcss-animate**: Plugin for adding CSS animations to Tailwind CSS.
+- **uuid**: Library for generating universally unique identifiers.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Real-time Collaboration**: Collaborate with others in real-time on documents and projects.
+- **Folder and File Structure**: Organize your work efficiently with a structured folder and file system.
+- **Advanced Editor**: Utilize a sophisticated editor with features like syntax highlighting, formatting, and more.
+- **Subscription Plans**: Choose between basic and pro plans to access additional features and resources.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Set up environment variables using `.env` file.
+4. Run the project with `npm run dev`.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions are welcome! Feel free to open issues and pull requests.

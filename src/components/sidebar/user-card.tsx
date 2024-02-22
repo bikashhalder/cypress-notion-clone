@@ -3,11 +3,10 @@ import React from "react";
 import { cookies } from "next/headers";
 import { Subscription } from "@/lib/supabase/supabase.types";
 import db from "@/lib/supabase/db";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import CypressProfileIcon from "../../../public/icons/cypressProfileIcon";
 import LogoutButton from "../global/logout-button";
 import { LogOut } from "lucide-react";
 import ModeToggle from "../global/mode-toggle";
+
 interface UserCardProps {
   subscription: Subscription | null;
 }
@@ -32,7 +31,7 @@ const UserCard: React.FC<UserCardProps> = async ({ subscription }) => {
   else {
     avatarPath = supabase.storage
       .from("avatars")
-      .getPublicUrl(response.avatarUrl)?.data.publicUrl;
+      .getPublicUrl(response.avatarUrl).data.publicUrl;
   }
 
   const profile = {
@@ -52,12 +51,6 @@ const UserCard: React.FC<UserCardProps> = async ({ subscription }) => {
     rounded-3xl
     '>
       <aside className='flex justify-center items-center gap-2'>
-        <Avatar>
-          <AvatarImage src='' />
-          <AvatarFallback>
-            <CypressProfileIcon />
-          </AvatarFallback>
-        </Avatar>
         <div className='flex flex-col'>
           <span className='text-muted-foreground'>
             {subscription?.status === "active" ? "Pro Plan" : "Free Plan"}

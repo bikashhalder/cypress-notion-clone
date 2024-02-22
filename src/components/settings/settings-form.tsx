@@ -14,6 +14,7 @@ import {
   LogOut,
   Plus,
   Share,
+  UploadIcon,
   User as UserIcon,
 } from "lucide-react";
 import { Separator } from "../ui/separator";
@@ -40,11 +41,9 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 import CollaboratorSearch from "../global/collaborator-search";
@@ -57,12 +56,12 @@ import LogoutButton from "../global/logout-button";
 import Link from "next/link";
 import { useSubscriptionModal } from "@/lib/providers/subscription-modal-provider";
 import { postData } from "@/lib/utils";
-import CypressProfileIcon from "../../../public/icons/cypressProfileIcon";
+import Image from "next/image";
 
 const SettingsForm = () => {
   const { toast } = useToast();
   const { user, subscription } = useSupabaseUser();
-  const { open, setOpen } = useSubscriptionModal();
+  const { setOpen } = useSubscriptionModal();
   const router = useRouter();
   const supabase = createClientComponentClient();
   const { state, workspaceId, dispatch } = useAppState();
@@ -71,12 +70,81 @@ const SettingsForm = () => {
   const [openAlertMessage, setOpenAlertMessage] = useState(false);
   const [workspaceDetails, setWorkspaceDetails] = useState<workspace>();
   const titleTimerRef = useRef<ReturnType<typeof setTimeout>>();
-  const [uploadingProfilePic, setUploadingProfilePic] = useState(false);
   const [uploadingLogo, setUploadingLogo] = useState(false);
   const [loadingPortal, setLoadingPortal] = useState(false);
+  const [avatarupload, setAvatarUpload] = useState<File | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
-  console.log("user", user);
-  //WIP PAYMENT PORTAL
+  // fetch profile picture
+  useEffect(() => {
+    const fetchAvatar = async () => {
+      try {
+        if (user) {
+          const { data, error } = await supabase
+            .from("users")
+            .select("avatar_url")
+            .eq("id", user.id)
+            .single();
+
+          if (error) {
+            throw error;
+          }
+
+          if (data) {
+            setAvatarUrl(data.avatar_url);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching avatar:", error);
+      }
+    };
+
+    fetchAvatar();
+  }, [user]);
+
+  const handleProfilePictureChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (e.target.files && e.target.files[0]) {
+      setAvatarUpload(e.target.files[0]);
+    }
+  };
+
+  const handleProfilePictureUpload = async () => {
+    if (!avatarupload) return;
+
+    try {
+      // Upload avatarupload to Supabase Storage
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .upload(`user_${user?.id}/${avatarupload.name}`, avatarupload);
+
+      if (error) {
+        throw error;
+      }
+
+      // Update user's avatar_url in the database
+      // const user = supabase.auth.user();
+      if (user) {
+        const { data: updateData, error: updateError } = await supabase
+          .from("users")
+          .update({ avatar_url: data?.path })
+          .eq("id", user.id)
+          .single();
+
+        if (updateError) {
+          throw updateError;
+        }
+        toast({
+          title: "Success",
+          description: "Avatar URL updated successfully",
+        });
+        console.log("Avatar URL updated successfully:", updateData);
+      }
+    } catch (error) {
+      console.error("Error uploading avatarupload:", error);
+    }
+  };
 
   const redirectToCustomerPortal = async () => {
     setLoadingPortal(true);
@@ -367,10 +435,21 @@ const SettingsForm = () => {
         <Separator />
         <div className='flex items-center'>
           <Avatar>
-            <AvatarImage src={""} />
-            <AvatarFallback>
-              <CypressProfileIcon />
-            </AvatarFallback>
+            {avatarUrl ? (
+              <Image
+                src={
+                  supabase.storage.from("avatars").getPublicUrl(avatarUrl).data
+                    .publicUrl
+                }
+                fill
+                className='w-full md:h-48
+                h-20
+                object-cover'
+                alt='Profile Picture'
+              />
+            ) : (
+              <AvatarImage src={""} />
+            )}
           </Avatar>
           <div className='flex flex-col ml-6'>
             <small className='text-muted-foreground cursor-not-allowed'>
@@ -386,9 +465,15 @@ const SettingsForm = () => {
               type='file'
               accept='image/*'
               placeholder='Profile Picture'
-              // onChange={onChangeProfilePicture}
-              disabled={uploadingProfilePic}
+              onChange={handleProfilePictureChange}
+              className='mb-2'
             />
+            <Button
+              className='mt-3'
+              disabled={avatarupload === null}
+              onClick={handleProfilePictureUpload}>
+              <UploadIcon /> Upload
+            </Button>
           </div>
         </div>
         <p className='flex items-center gap-2 mt-6'>
