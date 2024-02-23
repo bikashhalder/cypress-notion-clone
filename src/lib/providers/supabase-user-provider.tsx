@@ -48,13 +48,13 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
         if (error) {
           toast({
             title: "Unexpected Error",
-            description: "Opps! something went wrong. Try again later",
+            description: error,
           });
         }
       }
     };
     getUser();
-  }, [supabase, toast]);
+  }, [supabase, toast, user]);
 
   return (
     <SupabaseUserContext.Provider value={{ user, subscription }}>
