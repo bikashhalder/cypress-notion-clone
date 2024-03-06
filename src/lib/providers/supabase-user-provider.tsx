@@ -50,8 +50,7 @@ export const SupabaseUserProvider: React.FC<SupabaseUserProviderProps> = ({
           toast({
             title: "Unexpected Error",
             description:
-              // "Oppse! An unexpected error happened. Try again later.",
-              error,
+              "Oppse! An unexpected error happened. Try again later.",
           });
         }
       }
